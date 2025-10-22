@@ -10,24 +10,17 @@ public class MaxElementIterativeRecursive {
         return max;
     }
 
-    
-  static int findMaxRecursive(int[] arr, int index) {
-    
-    if (index == arr.length - 1) {
-        return arr[index];
+    static int findMaxRecursive(int[] arr, int index) {
+        if (index == arr.length - 1) {
+            return arr[index];
+        }
+        int maxRest = findMaxRecursive(arr, index + 1);
+        if (arr[index] > maxRest) {
+            return arr[index];
+        } else {
+            return maxRest;
+        }
     }
-
-    
-    int maxRest = findMaxRecursive(arr, index + 1);
-
-    
-    if (arr[index] > maxRest) {
-        return arr[index];
-    } else {
-        return maxRest;
-    }
-}
-
 
     public static void main(String[] args) {
         int[] arr1 = {10, 25, 47, 3, 19};
@@ -35,10 +28,10 @@ public class MaxElementIterativeRecursive {
 
         // Testcase 1
         System.out.println("Iterative Max (arr1): " + findMaxIterative(arr1)); // 47
-        System.out.println("Recursive Max (arr1): " + findMaxRecursive(arr1, arr1.length)); // 47
+        System.out.println("Recursive Max (arr1): " + findMaxRecursive(arr1, 0)); // 47
 
         // Testcase 2
         System.out.println("Iterative Max (arr2): " + findMaxIterative(arr2)); // -3
-        System.out.println("Recursive Max (arr2): " + findMaxRecursive(arr2, arr2.length)); // -3
+        System.out.println("Recursive Max (arr2): " + findMaxRecursive(arr2, 0)); // -3
     }
 }
